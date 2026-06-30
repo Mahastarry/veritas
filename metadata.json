@@ -1,0 +1,6 @@
+{
+  "name": "VERITAS MASTERCORE",
+  "description": "A high-scale Swiss-minimalist legal case management platform with advanced ledger queries, 12 legal data registry parameters, and a high-performance Python FastAPI blueprint.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

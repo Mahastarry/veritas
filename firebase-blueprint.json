@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Represents the subscription and usage details of a VERITAS advocate.",
+      "type": "object",
+      "properties": {
+        "plan": {
+          "type": "string",
+          "enum": ["free", "pro"],
+          "description": "The service tier active for the user."
+        },
+        "subscriptionStatus": {
+          "type": "string",
+          "enum": ["inactive", "active", "expired"],
+          "description": "Status of the subscription."
+        },
+        "subscriptionStart": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the current subscription started."
+        },
+        "subscriptionExpiry": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the subscription will expire."
+        },
+        "monthlyCaseCount": {
+          "type": "integer",
+          "description": "Count of cases created during the current monthly period."
+        },
+        "monthlyUsagePeriod": {
+          "type": "string",
+          "description": "The current month of usage tracked in YYYY-MM format."
+        }
+      },
+      "required": ["plan", "subscriptionStatus", "monthlyCaseCount", "monthlyUsagePeriod"]
+    },
+    "LegalCase": {
+      "title": "LegalCase",
+      "description": "Represents a single docket record stored in the ledger.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "caseIndexNo": {
+          "type": "string"
+        },
+        "petitionerParty": {
+          "type": "string"
+        },
+        "respondentParty": {
+          "type": "string"
+        },
+        "advocateOnRecord": {
+          "type": "string"
+        },
+        "classificationCategory": {
+          "type": "string"
+        },
+        "judicialForum": {
+          "type": "string"
+        },
+        "writCaseType": {
+          "type": "string"
+        },
+        "filingYearTarget": {
+          "type": "integer"
+        },
+        "currentCaseStatus": {
+          "type": "string"
+        },
+        "keywordsContentMapping": {
+          "type": "string"
+        },
+        "filingDateStart": {
+          "type": "string"
+        },
+        "filingDateEnd": {
+          "type": "string"
+        },
+        "hearingDateStart": {
+          "type": "string"
+        },
+        "hearingDateEnd": {
+          "type": "string"
+        },
+        "hearingIndex": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "caseSummary": {
+          "type": "string"
+        },
+        "petitionerContact": {
+          "type": "string"
+        },
+        "respondentContact": {
+          "type": "string"
+        },
+        "hearingHistory": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "userId", "caseIndexNo", "petitionerParty", "respondentParty"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Contains user subscription profile info."
+    },
+    "/cases/{caseId}": {
+      "schema": "LegalCase",
+      "description": "Represents legal cases created by verified advocates."
+    }
+  }
+}
